@@ -1,11 +1,16 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable import/extensions */
 import { promisify } from "util";
 import { exec as execCallback } from "child_process";
 import { writeFile } from "fs/promises";
-import { join } from "path";
+import { fileURLToPath } from "url";
+import { join, dirname } from "path";
 import packageJson from "./configFiles/packageJsonConfig.js";
 import eslintConfig from "./configFiles/eslintConfig.js";
 import prettierConfig from "./configFiles/prettierConfig.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const exec = promisify(execCallback);
 
@@ -24,15 +29,13 @@ const exec = promisify(execCallback);
       );
     }
 
-    const projectPath = join(
-      "C:\\Users\\tgola\\OneDrive\\Pulpit\\MegaKurs Backend\\Node",
-      `${safeFolderName}`,
-    );
+    const parentDir = dirname(__dirname);
+    const projectPath = join(parentDir, safeFolderName);
 
     const { stdout: mkdirOut, stderr: mkdirErr } = await exec(
       `mkdir ${safeFolderName}`,
       {
-        cwd: "C:\\Users\\tgola\\OneDrive\\Pulpit\\MegaKurs Backend\\Node",
+        cwd: parentDir,
         timeout: 1000 * 60 * 5,
       },
     );
