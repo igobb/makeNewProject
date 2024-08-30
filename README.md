@@ -1,4 +1,4 @@
-# makeNewProject Function for quickly adding a file with a pre-configured project ready to next lesson
+# makeNewProject Function for quickly adding a file with a pre-configured project ready to next lesson - task for MegaKurs
 
 ## The makeNewProject function allows you to quickly and easily add a new file with your specific name and start next lesson in MegaKurs.
 
